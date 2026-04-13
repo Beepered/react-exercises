@@ -12,18 +12,23 @@ import { useState } from 'react';
 export default function BugMutatedState() {
   let [count, setCount] = useState(0);
 
-  function handleAdd() {
-    count++;
-    setCount(count);
+  function handleAdd(amount) {
+    setCount(count + amount);
   }
 
   return (
     <div>
       <p>Bug 2 Count: {count}</p>
-      <button onClick={handleAdd}>Add 1</button>
+      <button onClick={() => handleAdd(1)}>Add 1</button>
     </div>
   );
 }
 
 // Explanation:
 // (Write your explanation here)
+/*
+removed count++ from handleAdd()
+added count + 1 setCount()
+weirdly doing count++ makes you have to click twice to add to count
+revised handleAdd() to use parameters
+*/

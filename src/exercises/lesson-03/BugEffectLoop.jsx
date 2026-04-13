@@ -15,10 +15,13 @@ export default function BugEffectLoop() {
 
   useEffect(() => {
     setCount(count + 1);
-  });
+  }, []);
 
   return <p>Bug 1 Count: {count}</p>;
 }
 
 // Explanation:
 // (Write your explanation here)
+/*
+Adding [] to useEffect makes it only run once / when component is first added
+*/
