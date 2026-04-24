@@ -15,10 +15,24 @@ export default function BugEventPropagation() {
       <h2>Stopping Event Propagation</h2>
       <div
         style={{ padding: 20, border: '2px solid red' }}
-        onClick={handleOuterClick}
+        onClick={(e) => {
+          e.stopPropagation();
+          handleOuterClick();
+        }}
       >
-        <button onClick={handleInnerClick}>Click inner button</button>
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            handleInnerClick();
+          }}
+        >
+          Click inner button
+        </button>
       </div>
     </>
   );
 }
+
+/*
+https://react.dev/learn/responding-to-events#stopping-propagation
+*/

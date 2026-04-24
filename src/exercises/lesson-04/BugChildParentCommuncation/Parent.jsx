@@ -12,7 +12,12 @@ export default function Parent() {
     <div>
       <h2>Parent-Child Communication</h2>
       <p>Counter: {count}</p>
-      <Child func={increment} />
+      <Child click={increment} />
     </div>
   );
 }
+
+/*
+Added "click={increment}" to Child component
+This causes click's click event to do "increment"
+*/
