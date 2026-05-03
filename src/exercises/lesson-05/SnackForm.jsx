@@ -19,11 +19,9 @@ export default function SnackForm({
     setTouched({ name: false, rating: false }); // reset when switching between add/edit
 
     if (isEditing) {
-      console.log('edit: ', editingSnack.name);
       setName(editingSnack.name);
       setRating(editingSnack.rating);
     } else {
-      console.log('add');
       setName('');
       setRating('');
     }
