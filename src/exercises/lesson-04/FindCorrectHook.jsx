@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 
 export default function FindCorrectHook() {
-  const countRef = useRef(document.querySelector('count'));
+  const countRef = useRef();
 
   let clickCount = 0; // ← incorrect implementation
 
