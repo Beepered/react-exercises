@@ -22,7 +22,7 @@ const POSTS_ENDPOINT = 'https://jsonplaceholder.typicode.com/posts/';
  * - title
  * - body
  */
-export function getPosts() {
+export async function getPosts() {
   console.log('[getPosts]: fetching list of posts');
 
   // TODO: use this `url` const to fetch the list of posts
@@ -30,6 +30,18 @@ export function getPosts() {
   // You may delete this comment once you've finished the implementation.
   // eslint-disable-next-line no-unused-vars
   const url = POSTS_ENDPOINT;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    if (response.status === 200) {
+      return data;
+    } else {
+      setAuthError(`Failed getPosts()`);
+    }
+  } catch (error) {
+    setAuthError(`Error: ${error.name} | ${error.message}`);
+  }
 }
 
 /**
@@ -39,7 +51,7 @@ export function getPosts() {
  * - title
  * - body
  */
-export function getSinglePost(postId) {
+export async function getSinglePost(postId) {
   if (!postId) {
     throw new Error('[getSinglePost]: postId parameter is required!');
   }
@@ -51,4 +63,16 @@ export function getSinglePost(postId) {
   // You may delete this comment once you've finished the implementation.
   // eslint-disable-next-line no-unused-vars
   const url = `${POSTS_ENDPOINT}${postId}`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    if (response.status === 200) {
+      return data;
+    } else {
+      setAuthError(`Failed getSinglePost(${postId})`);
+    }
+  } catch (error) {
+    setAuthError(`Error: ${error.name} | ${error.message}`);
+  }
 }
